@@ -4,8 +4,7 @@
 # Copyright (C) Alibaba Cloud Computing
 # All rights reserved.
 
-from aliyun.log.util import Util
-from logresponse import LogResponse
+from .logresponse import LogResponse
 
 
 class CreateLogStoreResponse(LogResponse):
@@ -50,8 +49,7 @@ class GetLogStoreResponse(LogResponse):
 
     def __init__(self, resp, header):
         LogResponse.__init__(self, header)
-        self.logstore_name = Util.convert_unicode_to_str(
-            resp["logstoreName"])
+        self.logstore_name = resp["logstoreName"]
         self.ttl = int(resp["ttl"])
         self.shard_count = int(resp["shardCount"])
 
@@ -96,7 +94,7 @@ class ListLogStoreResponse(LogResponse):
     def __init__(self, resp, header):
         LogResponse.__init__(self, header)
         self.count = int(resp["count"])
-        self.logstores = Util.convert_unicode_to_str(resp["logstores"])
+        self.logstores = resp["logstores"]
 
     def get_logstores(self):
         return self.logstores

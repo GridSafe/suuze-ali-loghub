@@ -8,7 +8,6 @@ import base64
 import urllib
 import socket
 import hashlib
-import collections
 
 
 class Util:
@@ -48,17 +47,18 @@ class Util:
 
     @staticmethod
     def cal_md5(content):
-        return hashlib.md5(content).hexdigest().upper()
+        return hashlib.md5(content.encode()).hexdigest().upper()
 
     @staticmethod
     def hmac_sha1(content, key):
-        hashed = hmac.new(key, content, hashlib.sha1).digest()
+        hashed = hmac.new(key.encode(), content.encode(),
+                          hashlib.sha1).digest()
         return base64.encodestring(hashed).rstrip()
 
     @staticmethod
     def canonicalized_log_headers(headers):
         content = ''
-        for key in sorted(headers.iterkeys()):
+        for key in sorted(headers.keys()):
             if key[:6] == 'x-log-' or key[:6] == 'x-acs-':
                 # x-log- header
                 content += key + ':' + str(headers[key]) + "\n"
@@ -75,7 +75,7 @@ class Util:
     def canonicalized_resource(resource, params):
         if params:
             urlString = ''
-            for key in sorted(params.iterkeys()):
+            for key in sorted(params.keys()):
                 value = params[key]
                 if not isinstance(value, str):
                     # int, float, str to unicode
@@ -99,16 +99,7 @@ class Util:
         content += headers['Date'] + "\n"
         content += Util.canonicalized_log_headers(headers)
         content += Util.canonicalized_resource(resource, params)
-        return Util.hmac_sha1(content, key)
-
-    @staticmethod
-    def convert_unicode_to_str(data):
-        if isinstance(data, collections.Mapping):
-            return dict(map(Util.convert_unicode_to_str, data.iteritems()))
-        elif isinstance(data, collections.Iterable):
-            return type(data)(map(Util.convert_unicode_to_str, data))
-        else:
-            return data
+        return Util.hmac_sha1(content, key).decode()
 
     @staticmethod
     def get_json_value(json_map, key, default_value=None):

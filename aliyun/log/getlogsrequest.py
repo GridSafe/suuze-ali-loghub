@@ -4,7 +4,7 @@
 # Copyright (C) Alibaba Cloud Computing
 # All rights reserved.
 
-from logrequest import LogRequest
+from .logrequest import LogRequest
 
 
 class GetLogsRequest(LogRequest):

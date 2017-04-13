@@ -171,7 +171,7 @@ def sample_logstore(client, project, logstore):
 
 
 if __name__ == '__main__':
-    endpoint = 'cn-shanghai.log.aliyuncs.com'
+    endpoint = ''
     accessKeyId = ''
     accessKey = ''
     project = 'log-sdk-test'

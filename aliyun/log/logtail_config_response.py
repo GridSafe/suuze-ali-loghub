@@ -4,7 +4,6 @@
 # Copyright (C) Alibaba Cloud Computing
 # All rights reserved.
 
-from aliyun.log.util import Util
 from aliyun.log.logresponse import LogResponse
 from aliyun.log.logtail_config_detail import LogtailConfigHelper
 
@@ -87,7 +86,7 @@ class ListLogtailConfigResponse(LogResponse):
         LogResponse.__init__(self, header)
         self.count = int(resp["count"])
         self.count = int(resp["total"])
-        self.logtail_configs = Util.convert_unicode_to_str(resp["configs"])
+        self.logtail_configs = resp["configs"]
 
     def get_configs(self):
         return self.logtail_configs

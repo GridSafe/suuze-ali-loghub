@@ -13,7 +13,7 @@ except ImportError:
     pass
 
 from datetime import datetime
-from log_logs_pb2 import LogGroup
+from aliyun.log.log_logs_pb2 import LogGroup
 from aliyun.log.util import Util
 from aliyun.log.logexception import LogException
 from aliyun.log.getlogsresponse import GetLogsResponse
@@ -134,7 +134,7 @@ class LogClient(object):
         if not respText:
             return None
         try:
-            return json.loads(respText)
+            return json.loads(respText.decode())
         except:
             raise LogException('BadResponse',
                                'Bad json format:\n%s' % respText,
@@ -165,6 +165,7 @@ class LogClient(object):
                      headers, respons_body_type='json'):
         (status, respText, respHeader) = self._getHttpResponse(
             method, url, params, body, headers)
+
         header = {}
         for key, value in respHeader.items():
             header[key] = value
@@ -173,17 +174,14 @@ class LogClient(object):
             in header else ''
         exJson = None
 
-        header = Util.convert_unicode_to_str(header)
         if status == 200:
             if respons_body_type == 'json':
                 exJson = self._loadJson(respText, requestId)
-                # exJson = Util.convert_unicode_to_str(exJson)
                 return (exJson, header)
             else:
                 return (respText, header)
 
-        exJson = self._loadJson(respText.encode('utf-8'), requestId)
-        exJson = Util.convert_unicode_to_str(exJson)
+        exJson = self._loadJson(respText, requestId)
 
         if 'errorCode' in exJson and 'errorMessage' in exJson:
             raise LogException(exJson['errorCode'], exJson['errorMessage'],
@@ -581,7 +579,7 @@ class LogClient(object):
         headers["Content-Type"] = "application/json"
         resource = "/logstores"
         body = {}
-        body["logstoreName"] = logstore_name.encode("utf-8")
+        body["logstoreName"] = logstore_name
         body["ttl"] = int(ttl)
         body["shardCount"] = int(shard_count)
         body_str = json.dumps(body)

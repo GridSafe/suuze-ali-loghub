@@ -4,8 +4,7 @@
 # Copyright (C) Alibaba Cloud Computing
 # All rights reserved.
 
-from aliyun.log.util import Util
-from logresponse import LogResponse
+from .logresponse import LogResponse
 
 
 class GetCursorResponse(LogResponse):
@@ -21,7 +20,7 @@ class GetCursorResponse(LogResponse):
 
     def __init__(self, resp, header):
         LogResponse.__init__(self, header)
-        self.cursor = Util.convert_unicode_to_str(resp["cursor"])
+        self.cursor = resp["cursor"]
 
     def get_cursor(self):
         return self.cursor

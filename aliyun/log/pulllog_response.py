@@ -4,10 +4,8 @@
 # Copyright (C) Alibaba Cloud Computing
 # All rights reserved.
 
-from aliyun.log.logexception import LogException
-from aliyun.log.util import Util
-from logresponse import LogResponse
-from log_logs_pb2 import LogGroupList
+from .logresponse import LogResponse
+from .log_logs_pb2 import LogGroupList
 
 
 class PullLogResponse(LogResponse):
@@ -22,7 +20,7 @@ class PullLogResponse(LogResponse):
     """
     def __init__(self, resp, header):
         LogResponse.__init__(self, header)
-        self.next_cursor = Util.convert_unicode_to_str(header["x-log-cursor"])
+        self.next_cursor = header["x-log-cursor"]
         self.log_count = int(header["x-log-count"])
         self.loggroup_list = LogGroupList()
         self._parse_loggroup_list(resp)
@@ -58,9 +56,7 @@ class PullLogResponse(LogResponse):
         print('detail:', self.get_loggroup_json_list())
 
     def _parse_loggroup_list(self, data):
-        if not self.loggroup_list.ParseFromString(data):
-            raise LogException('BadResponse',
-                               'failed to parse data to LogGroupList')
+        self.loggroup_list.ParseFromString(data)
 
     def _transfer_to_json(self):
         self.loggroup_list_json = []

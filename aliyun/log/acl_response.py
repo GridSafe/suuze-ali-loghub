@@ -5,7 +5,7 @@
 # All rights reserved.
 
 from aliyun.log.acl_config import AclConfig
-from logresponse import LogResponse
+from .logresponse import LogResponse
 
 
 class UpdateAclResponse(LogResponse):

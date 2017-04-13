@@ -4,8 +4,8 @@
 # Copyright (C) Alibaba Cloud Computing
 # All rights reserved.
 
-from logresponse import LogResponse
-from queriedlog import QueriedLog
+from .logresponse import LogResponse
+from .queriedlog import QueriedLog
 
 
 class GetLogsResponse(LogResponse):
@@ -25,7 +25,7 @@ class GetLogsResponse(LogResponse):
         self.logs = []
         for data in resp:
             contents = {}
-            for key in data.iterkeys():
+            for key in data.keys():
                 if key != '__time__' and key != '__source__':
                     contents[key.encode('utf-8')] = data[key].encode('utf-8')
             self.logs.append(QueriedLog(data['__time__'],

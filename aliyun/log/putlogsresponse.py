@@ -4,7 +4,7 @@
 # Copyright (C) Alibaba Cloud Computing
 # All rights reserved.
 
-from logresponse import LogResponse
+from .logresponse import LogResponse
 
 
 class PutLogsResponse(LogResponse):

@@ -4,8 +4,7 @@
 # Copyright (C) Alibaba Cloud Computing
 # All rights reserved.
 
-from aliyun.log.util import Util
-from logresponse import LogResponse
+from .logresponse import LogResponse
 
 
 class ListShardResponse(LogResponse):
@@ -21,7 +20,7 @@ class ListShardResponse(LogResponse):
 
     def __init__(self, resp, header):
         LogResponse.__init__(self, header)
-        self.shards = Util.convert_unicode_to_str(resp)
+        self.shards = resp
 
     def get_shards_info(self):
         return self.shards

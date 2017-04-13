@@ -4,7 +4,6 @@
 # Copyright (C) Alibaba Cloud Computing
 # All rights reserved.
 
-from aliyun.log.util import Util
 from aliyun.log.logresponse import LogResponse
 from aliyun.log.machine_group_detail import MachineGroupDetail
 from aliyun.log.machine_group_detail import MachineStatus
@@ -92,8 +91,7 @@ class ListMachineGroupResponse(LogResponse):
         LogResponse.__init__(self, header)
         self.count = int(resp["count"])
         self.total = int(resp["total"])
-        self.machine_groups = Util.convert_unicode_to_str(
-            resp["machinegroups"])
+        self.machine_groups = resp["machinegroups"]
 
     def get_machine_group(self):
         return self.machine_groups

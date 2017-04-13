@@ -4,8 +4,8 @@
 # Copyright (C) Alibaba Cloud Computing
 # All rights reserved.
 
-from logresponse import LogResponse
-from histogram import Histogram
+from .logresponse import LogResponse
+from .histogram import Histogram
 
 
 class GetHistogramsResponse(LogResponse):
