@@ -2,10 +2,12 @@
 
 ## Environment Version changed
 
-1. protobuf: --> version: 3.2.1
+1. protobuf: --> version: 3.2.0
 2. python: --> version: 3.5
 
 ## Fix:
+
+Stupid coding style
 
 
 # 阿里云日志服务Python SDK
