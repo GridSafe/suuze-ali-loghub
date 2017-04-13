@@ -180,7 +180,7 @@ if __name__=='__main__':
         sample_put_logs(client, project, logstore)
         sample_pull_logs(client, project, logstore)
         sample_get_logs(client, project, logstore)
-    except LogException, e:
-        print e
+    except LogException as e:
+        print(e)
 
     #client.delete_logstore(project, logstore)

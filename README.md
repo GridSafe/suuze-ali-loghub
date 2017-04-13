@@ -1,3 +1,13 @@
+# Python fork of aliyun-log-python-sdk
+
+## Environment Version changed
+
+1. protobuf: --> version: 3.2.1
+2. python: --> version: 3.5
+
+## Fix:
+
+
 # 阿里云日志服务Python SDK
 
 ## 版本
