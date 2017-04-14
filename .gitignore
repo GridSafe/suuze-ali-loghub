@@ -1,2 +1,7 @@
 *.egg-info
+
+# pycache
 __pycache__
+
+# mac
+.DS_Store

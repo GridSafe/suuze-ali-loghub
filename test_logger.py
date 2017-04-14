@@ -34,7 +34,7 @@ def test_logger():
     test_logger.addHandler(handler)
     test_logger.addHandler(handler_2)
 
-    test_logger.info('fuck')
+    test_logger.info('test_direct_get_logger')
 
 
 def test_dict_config():
@@ -77,9 +77,9 @@ def test_dict_config():
     dictConfig(config)
 
     logger = logging.getLogger('dict_logger')
-    logger.info('fuck!!!!!!!!!')
+    logger.info('test_dict_config_logger')
 
 
 if __name__ == '__main__':
-    # test_logger()
+    test_logger()
     test_dict_config()
