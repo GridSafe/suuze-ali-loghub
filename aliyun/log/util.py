@@ -47,7 +47,9 @@ class Util:
 
     @staticmethod
     def cal_md5(content):
-        return hashlib.md5(content.encode()).hexdigest().upper()
+        if isinstance(content, str):
+            content = content.encode()
+        return hashlib.md5(content).hexdigest().upper()
 
     @staticmethod
     def hmac_sha1(content, key):
