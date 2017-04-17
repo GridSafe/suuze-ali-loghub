@@ -25,11 +25,11 @@ classifiers = [
 ]
 
 setup(
-    name='suuze-log-service',
+    name='suuze-ali-loghub',
     version=version,
-    description='log service Python client SDK integrating aliyun',
+    description='Log service Python client SDK integrating aliyun log service',
     author='suuze and sls_dev',
-    url='http://www.aliyun.com/product/sls',
+    url='https://github.com/GridSafe/suuze-ali-loghub',
     install_requires=install_requires,
     packages=find_packages(),
     classifiers=classifiers,
