@@ -6,11 +6,6 @@
 
 """Setup script for log service SDK.
 
-You need to install google protocol buffer, setuptools and python-requests.
-https://code.google.com/p/protobuf/
-https://pypi.python.org/pypi/setuptools
-http://docs.python-requests.org/
-
 """
 
 from setuptools import setup, find_packages
@@ -20,7 +15,9 @@ install_requires = [
     'protobuf==3.2.0',
 ]
 
-version = '0.6.4'
+alisdk_version = '0.6.4'
+
+version = '0.0.1'
 
 classifiers = [
     'Development Status :: 5 - Production/Stable',
@@ -29,10 +26,10 @@ classifiers = [
 ]
 
 setup(
-    name='LogService',
+    name='suuze-log-service',
     version=version,
-    description='log service Python client SDK',
-    author='sls_dev',
+    description='log service Python client SDK integrating aliyun',
+    author='suuze and sls_dev',
     url='http://www.aliyun.com/product/sls',
     install_requires=install_requires,
     packages=find_packages(),
