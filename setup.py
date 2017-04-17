@@ -22,7 +22,6 @@ version = '0.0.1'
 classifiers = [
     'Development Status :: 5 - Production/Stable',
     'Programming Language :: Python :: 3.5',
-    'License :: Copyright (C) Alibaba Cloud Computing. All rights reserved.'
 ]
 
 setup(
