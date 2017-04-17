@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 import time
-from copy import deepcopy
 from logging import Handler
 
 from aliyun.log.logclient import LogClient
@@ -28,7 +27,7 @@ class AliLogHubHandler(Handler):
         :param log_project: aliyun log service project
         :param log_store: aliyun log service store
         :param log_topic: custom log topic for better log search
-        :param log_source: host ip 
+        :param log_source: host ip
         :param require_args: require args that need to send to aliyun loghub,
                              should be a subset of _record_args or None
         """
